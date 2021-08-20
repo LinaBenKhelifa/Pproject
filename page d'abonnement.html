@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulaire de connexion en HTML & CSS - Frenchcoder</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <style>
+    body{
+      background-image: url(https://lh3.googleusercontent.com/proxy/ciTXjCl7LF6Z2OXnOcnI9MRxuIDPRJNKNM6LUxbeHyV_WsWUg-xIRVgUwOEJg09K3PPBrT4LqphdY_SZYBH7SmolUhuOpUtDGweWgugDTJ-3fYPerIFV2i-g-mchpoPPbmzYpPdNVc54ky-IuobfzYziFmwKHmTqdl--Xj9qWlD73w);
+  background-repeat:no-repeat;
+  background-size: cover;
+    }
+  </style>
+  <script>
+function validateForm() {
+  let x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Email must be filled out");
+    return false;
+  }
+  else{
+    alert("All is working")
+  }
+}   
+
+
+  function getvalue(){
+    console.log("TEST")
+    
+    var firebaseRef = firebase.database().ref('Emails');
+    const email = document.getElementById('email').value;
+    console.log(email);
+    firebaseRef.push(email);
+  }
+
+   </script>
+</head>
+<body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDHlJqo5THaoMPR9SzVlCu_b6a3ucQJ0Tg",
+    authDomain: "final-project-gmc-web1.firebaseapp.com",
+    projectId: "final-project-gmc-web1",
+    storageBucket: "final-project-gmc-web1.appspot.com",
+    messagingSenderId: "631909580352",
+    appId: "1:631909580352:web:7108ce2e01bb5c1923e9a5",
+    measurementId: "G-L1QY1YHEJ2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+  
+  <form name="myForm" onsubmit="return validateForm()">
+    
+    <h1>Se connecter</h1>
+    
+    <p class="choose-email">utiliser mon adresse e-mail :</p>
+    <div class="inputs">
+      <input id="email" name="fname" type="email" placeholder="Email" />
+    </div>
+    
+    <div align="center">
+      <button type="submit" onclick="getvalue()">Se connecter</button>
+    </div>
+  </form>
+</body>
+</html>
+
+
